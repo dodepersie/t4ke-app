@@ -83,19 +83,19 @@ router.post("/", async (req, res) => {
         url_nowm: videoData.video.downloadAddr || "",
       },
       author: {
-        uniqueId: videoData.author.uniqueId,
-        nickname: videoData.author.nickname,
-        // ✅ PERBAIKAN: Ambil data langsung dari videoData.author
-        followerCount: videoData.author.followerCount || 0,
-        followingCount: videoData.author.followingCount || 0,
-        heart: videoData.author.heartCount || 0,
-        videoCount: videoData.author.videoCount || 0,
-        friendCount: videoData.author.friendCount || 0,
+        uniqueId: videoData.author?.uniqueId,
+        nickname: videoData.author?.nickname,
+        followerCount: videoData.authorStats?.followerCount || 0,
+        followingCount: videoData.authorStats?.followingCount || 0,
+        heart: videoData.authorStats?.heartCount || 0,
+        videoCount: videoData.authorStats?.videoCount || 0,
+        friendCount: videoData.authorStats?.friendCount || 0,
       },
     };
+
+    console.log(videoData);
     res.status(200).json(result);
   } catch (error) {
-    // Memberikan detail error yang lebih baik saat development
     console.error(error);
     res.status(500).json({
       status: "error",
