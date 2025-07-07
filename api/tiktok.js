@@ -68,6 +68,7 @@ router.get("/", async (req, res) => {
         commentCount: videoData.stats.commentCount || 0,
         likeCount: videoData.stats.diggCount || 0,
         saveCount: videoData.stats.collectCount || 0,
+        playCount: videoData.stats.playCount || 0,
         originCover: videoData.video.originCover,
       },
       author: {
