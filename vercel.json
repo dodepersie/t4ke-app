@@ -1,14 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "tiktok.js": {
+    "api/tiktok.js": {
       "maxDuration": 45
     }
   },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "tiktok.js"
+      "destination": "/api/tiktok.js"
     }
   ]
 }
