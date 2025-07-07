@@ -4,5 +4,5 @@
     "cheerio": "^1.1.0",
     "express": "^5.1.0"
   },
-  "main": "/api/tiktok.js"
+  "main": "index.js"
 }
