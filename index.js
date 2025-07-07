@@ -4,7 +4,7 @@ const app = express();
 const tiktokApiRouter = require("./api/tiktok.js");
 
 app.get("/", (req, res) => {
-  res.status(200).send("Can't GET /");
+  res.status(404).send("Cannot GET /");
 });
 
 app.use("/api/tt", tiktokApiRouter);
