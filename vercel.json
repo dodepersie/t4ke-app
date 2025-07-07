@@ -1,20 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "/api/tiktok.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/tiktok.js": {
+      "maxDuration": 45
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/api/tiktok.js"
     }
-  ],
-  "functions": {
-    "api/tiktok.js": {
-      "maxDuration": 45
-    }
-  }
+  ]
 }
