@@ -12,4 +12,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/tt", tiktokApiRouter);
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running in http://localhost:${PORT}`);
+});
+
 module.exports = app;

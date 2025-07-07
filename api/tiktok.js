@@ -63,14 +63,26 @@ router.get("/", async (req, res) => {
     const result = {
       status: "success",
       data: {
-        caption: videoData.desc || "Tidak ada caption",
-        publishDateFormatted: `${datePart} - ${timePart}`,
+        caption: videoData.desc || "No caption",
+        publishDate: `${datePart} - ${timePart}`,
         commentCount: videoData.stats.commentCount || 0,
         likeCount: videoData.stats.diggCount || 0,
         saveCount: videoData.stats.collectCount || 0,
-        viewCount: videoData.stats.playCount || 0,
+        originCover: videoData.video.originCover,
+      },
+      author: {
+        id: videoData.author.id,
+        uniqueId: videoData.author.uniqueId,
+        nickname: videoData.author.nickname,
+        followerCount: videoData.authorStats.followerCount,
+        followingCount: videoData.authorStats.followingCount,
+        heart: videoData.authorStats.heart,
+        videoCount: videoData.authorStats.videoCount,
+        friendCount: videoData.authorStats.friendCount,
       },
     };
+
+    console.log(videoData);
 
     res.status(200).json(result);
   } catch (error) {
