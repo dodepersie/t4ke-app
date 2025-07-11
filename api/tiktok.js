@@ -85,8 +85,8 @@ router.post("/", async (req, res) => {
       author: {
         uniqueId: videoData.author?.uniqueId,
         nickname: videoData.author?.nickname,
-        avatar: videoData.author?.avatarLarger,
-        bio: videoData.author?.signature,
+        avatar: videoData.author?.avatarMedium,
+        bio: videoData.author?.signature || "-",
         followerCount: videoData.authorStats?.followerCount || 0,
         followingCount: videoData.authorStats?.followingCount || 0,
         heart: videoData.authorStats?.heartCount || 0,
