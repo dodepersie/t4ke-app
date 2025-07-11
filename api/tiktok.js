@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     if (scriptTag.length === 0) {
       return res.status(500).json({
         status: "error",
-        message: "Struktur halaman TikTok mungkin telah berubah.",
+        message: "Maybe TikTok page structure already change.",
       });
     }
 
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
     if (!videoData || !videoData.stats || !videoData.author) {
       return res.status(404).json({
         status: "error",
-        message: "Data video atau penulis tidak ditemukan dalam JSON.",
+        message: "Video data not found in JSON.",
       });
     }
 
@@ -85,21 +85,23 @@ router.post("/", async (req, res) => {
       author: {
         uniqueId: videoData.author?.uniqueId,
         nickname: videoData.author?.nickname,
+        avatar: videoData.author?.avatarLarger,
+        bio: videoData.author?.signature,
         followerCount: videoData.authorStats?.followerCount || 0,
         followingCount: videoData.authorStats?.followingCount || 0,
         heart: videoData.authorStats?.heartCount || 0,
         videoCount: videoData.authorStats?.videoCount || 0,
         friendCount: videoData.authorStats?.friendCount || 0,
+        locationCreated: videoData.locationCreated,
       },
     };
 
-    console.log(videoData);
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
     res.status(500).json({
       status: "error",
-      message: "Terjadi kesalahan pada server.",
+      message: "Server error.",
       details: error.message,
     });
   }
